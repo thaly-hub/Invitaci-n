@@ -543,6 +543,25 @@
     font-size:1.5rem; color:var(--deep-rose); margin:8px 0 8px;
   }
 
+  /* --- código de vestimenta con iconos propios --- */
+  .dress-grid{ display:flex; justify-content:center; gap:22px; margin:14px 0 16px; }
+  .dress-item{
+    flex:1; max-width:130px;
+    display:flex; flex-direction:column; align-items:center;
+    padding:14px 8px 12px; border-radius:18px;
+    background:linear-gradient(170deg, rgba(255,255,255,.85), rgba(247,203,230,.45));
+    border:1px solid var(--gold-soft);
+    color:var(--deep-rose);
+  }
+  .dress-svg{ width:64px; height:64px; animation:float 3.8s ease-in-out infinite; }
+  .dress-item:nth-child(2) .dress-svg{ animation-delay:-1.9s; }
+  .dress-who{ margin-top:8px; font-family:'Cormorant Garamond', serif; font-weight:600; font-size:1.1rem; color:var(--deep-rose); }
+  .dress-what{ font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; }
+  .dress-note{ display:flex; align-items:center; justify-content:center; gap:8px; }
+  .dress-note strong{ color:var(--violet); font-weight:500; }
+  .no-lila{ width:20px; height:20px; flex:0 0 auto; }
+  .inline-ico{ width:1.2em; height:1.2em; vertical-align:-.25em; color:var(--gold); }
+
   footer .bf{ width:36px; height:27px; margin:0 auto 6px; }
 
   /* =========================================================
@@ -826,12 +845,38 @@
   </section>
 
   <section class="panel">
-    <div class="dress-icons">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6l-7 5v5l-9 6 3 5 6-3v18h14V24l6 3 3-5-9-6v-5l-7-5z"/></svg>
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6c-2 0-3 2-3 4l-4 6 3 3 2-2v6l-8 20h20l-8-20v-6l2 2 3-3-4-6c0-2-1-4-3-4z"/></svg>
-    </div>
+    <p class="label-script">código de vestimenta</p>
     <p class="dress-word">Elegante</p>
-    <p class="dress-note">El color lila queda reservado para la quinceañera 💗</p>
+    <div class="dress-grid">
+      <div class="dress-item">
+        <svg class="dress-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+          <path d="M22 9 L11 14 Q8 15 8 19 L6 50 L13 51 L15 30 L15 57 H49 L49 30 L51 51 L58 50 L56 19 Q56 15 53 14 L42 9" fill="url(#bfWing)" fill-opacity=".25"/>
+          <path d="M22 9 L32 17 L42 9"/>
+          <path d="M22 9 L26 31 L32 40 L38 31 L42 9" fill="#fff" fill-opacity=".85"/>
+          <path d="M32 17 L29.8 20.5 L31 22.5 L29 36 L32 39.5 L35 36 L33 22.5 L34.2 20.5 Z" fill="url(#bfGold)" stroke="#9C7330" stroke-width="1"/>
+          <path d="M32 40 V57"/>
+          <circle cx="35" cy="45" r="1.2" fill="currentColor"/>
+          <circle cx="35" cy="51" r="1.2" fill="currentColor"/>
+          <path d="M42 30 H49"/>
+          <path d="M43.5 30 L45 26.5 L46.5 30" fill="url(#bfGold)" stroke="#9C7330" stroke-width="1"/>
+        </svg>
+        <span class="dress-who">Caballeros</span>
+        <span class="dress-what">Traje formal</span>
+      </div>
+      <div class="dress-item">
+        <svg class="dress-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+          <path d="M27 4 L26 9 M37 4 L38 9"/>
+          <path d="M26 9 Q32 13 38 9 L39 22 Q32 25 25 22 Z" fill="url(#bfWing)" fill-opacity=".55"/>
+          <path d="M25 22 Q32 25 39 22 L39.5 25.5 Q32 28.5 24.5 25.5 Z" fill="url(#bfGold)" stroke="#9C7330" stroke-width="1"/>
+          <path d="M24.5 25.5 Q32 28.5 39.5 25.5 Q46 40 55 58 Q32 63 9 58 Q18 40 24.5 25.5 Z" fill="url(#bfWing)" fill-opacity=".3"/>
+          <path d="M32 28.5 Q31 44 30.5 60.5 M28 28 Q22 44 18 59.5 M36 28 Q42 44 46 59.5" stroke-width="1" opacity=".7"/>
+          <path d="M20 46 l1 -2 l1 2 l2 1 l-2 1 l-1 2 l-1 -2 l-2 -1 Z M43 40 l.8 -1.6 l.8 1.6 l1.6 .8 l-1.6 .8 l-.8 1.6 l-.8 -1.6 l-1.6 -.8 Z" fill="url(#bfGold)" stroke="none"/>
+        </svg>
+        <span class="dress-who">Damas</span>
+        <span class="dress-what">Vestido elegante</span>
+      </div>
+    </div>
+    <p class="dress-note"><svg class="no-lila" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#C79BEA" stroke="#7E3E8C" stroke-width="1.5"/><path d="M5.6 18.4 L18.4 5.6" stroke="#7E3E8C" stroke-width="2" stroke-linecap="round"/></svg><span>El color <strong>lila</strong> queda reservado para la quinceañera</span></p>
   </section>
 
   <section class="panel" data-private>
@@ -854,7 +899,7 @@
   <section class="panel" data-private>
     <p class="label-script">nos vemos en</p>
     <p class="addr">Cartagena, barrio Tierra Baja<br>Cra. 3 #6-6</p>
-    <a class="maps-btn" id="maps-link" href="#" target="_blank" rel="noopener">
+    <a class="maps-btn" id="maps-link" href="https://maps.app.goo.gl/Wh8iCt8WjiTGx8wr5" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
       Ver ubicación
     </a>
@@ -868,7 +913,7 @@
       <path d="M17 6c2 3 5 5 7 8M31 6c-2 3-5 5-7 8" stroke-linecap="round"/>
     </svg>
     <p class="gift-title">Lluvia de sobres</p>
-    <p class="gift-note">Tu presencia es mi mejor regalo, pero si deseas tener un detalle conmigo, habrá una lluvia de sobres el día de la fiesta 💌</p>
+    <p class="gift-note">Tu presencia es mi mejor regalo, pero si deseas tener un detalle conmigo, habrá una lluvia de sobres el día de la fiesta <svg class="inline-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 17.2s-3-1.9-3-3.8c0-1 .8-1.6 1.6-1.6.6 0 1.1.3 1.4.8.3-.5.8-.8 1.4-.8.8 0 1.6.6 1.6 1.6 0 1.9-3 3.8-3 3.8z" fill="var(--rose)"/></svg></p>
   </section>
 
   <section class="panel">
@@ -1048,9 +1093,6 @@
   tick();
   setInterval(tick, 1000);
 
-  // maps link
-  document.getElementById('maps-link').href =
-    'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Tierra Baja Cra 3 #6-6, Cartagena de Indias');
 
   // whatsapp RSVP link
   let guests = 1;
@@ -1062,7 +1104,7 @@
     let lista = '';
     for(let i=1;i<=guests;i++){ lista += '\n' + i + '. '; }
     const asisten = guests === 1 ? 'Asistirá 1 persona:' : 'Asistirán ' + guests + ' personas:';
-    const msg = 'Hola! 🎉 ' + quien + 'Quiero confirmar mi asistencia a los 15 años de Thaliana el 22 de noviembre 💗\n\n' + asisten + lista;
+    const msg = '¡Hola! ' + quien + 'Quiero confirmar mi asistencia a los 15 años de Thaliana el 22 de noviembre.\n\n' + asisten + lista;
     rsvpBtn.href = 'https://wa.me/573160425721?text=' + encodeURIComponent(msg);
   }
   const MAX_GUESTS = 4;
