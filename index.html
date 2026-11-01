@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
 <title>Mis XV Años · Thaliana</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -617,7 +618,7 @@
     </p>
   </section>
 
-  <section class="panel feature">
+  <section class="panel feature" data-private>
     <p class="label-script">una noche de princesa</p>
     <div class="arch">
       <img src="img/thaliana-sonrisa.jpg" alt="Thaliana sonriendo con su vestido lila" width="1400" height="933" loading="lazy" data-zoom>
@@ -656,7 +657,7 @@
     <p class="dress-note">El color lila queda reservado para la quinceañera 💗</p>
   </section>
 
-  <section class="panel">
+  <section class="panel" data-private>
     <p class="label-script">mis recuerdos</p>
     <p class="month">Un vistazo a mi sesión</p>
     <div class="gallery">
@@ -673,7 +674,7 @@
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel" data-private>
     <p class="label-script">nos vemos en</p>
     <p class="addr">Tierra Baja<br>Cra. 3 #6-6</p>
     <a class="maps-btn" id="maps-link" href="#" target="_blank" rel="noopener">
@@ -945,6 +946,43 @@
     playerBox.classList.remove('is-playing');
     playerHint.textContent = 'toca para reproducir';
   });
+
+  // ---------- fases de la invitación (hora Colombia) ----------
+  //  hasta el 10 nov  -> invitación completa
+  //  11 al 22 nov     -> lo mínimo: sin fotos de la sesión ni dirección
+  //  desde el 23 nov  -> toda la información desaparece
+  const MIN_FROM  = new Date('2026-11-11T00:00:00-05:00');
+  const GONE_FROM = new Date('2026-11-23T00:00:00-05:00');
+  function currentPhase(){
+    const now = new Date();
+    return now >= GONE_FROM ? 'gone' : now >= MIN_FROM ? 'min' : 'full';
+  }
+  const PHASE = currentPhase();
+
+  if(PHASE === 'min'){
+    document.querySelectorAll('[data-private]').forEach(el=>{
+      const next = el.nextElementSibling;
+      if(next && next.classList.contains('divider')) next.remove();
+      el.remove();
+    });
+  }
+
+  if(PHASE === 'gone'){
+    song.pause();
+    song.remove();
+    document.getElementById('lightbox').remove();
+    document.title = 'Gracias';
+    document.querySelector('.wrap').innerHTML =
+      '<section class="hero" style="padding-top:22vh">'
+      + butterfly('lilac','slow').replace('class="bf','style="width:70px;height:52px;margin:0 auto 14px" class="bf')
+      + '<p class="eyebrow">gracias</p>'
+      + '<p class="quote" style="margin-top:14px">Esta invitación ya cerró.<br>Gracias por ser parte de mi historia.</p>'
+      + '<div class="flourish">' + butterfly('gold') + '</div>'
+      + '</section>';
+  }
+
+  // si la página queda abierta y cambia la fase, se recarga sola
+  setInterval(()=>{ if(currentPhase() !== PHASE) location.reload(); }, 60000);
 </script>
 </body>
 </html>
