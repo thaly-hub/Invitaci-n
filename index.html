@@ -542,6 +542,11 @@
     75%{ transform:translateX(5px); }
   }
 
+  .rsvp-closed-title{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500;
+    font-size:1.5rem; color:var(--deep-rose); margin:8px 0 8px;
+  }
+
   footer .bf{ width:36px; height:27px; margin:0 auto 6px; }
 </style>
 </head>
@@ -690,7 +695,8 @@
 
   <section class="panel">
     <p class="label-script">confirma tu asistencia</p>
-    <p class="rsvp-text">Tu presencia hará que esta noche sea aún más especial. Por favor confírmame si me acompañas.</p>
+    <p class="rsvp-text" id="rsvp-intro">Tu presencia hará que esta noche sea aún más especial. Por favor confírmame si me acompañas.</p>
+    <div id="rsvp-open">
     <input class="rsvp-name" id="rsvp-name" type="text" placeholder="Tu nombre" autocomplete="name">
     <div class="guests">
       <span class="guests-label">¿Cuántas personas asistirán?</span>
@@ -703,6 +709,11 @@
     </div>
     <a class="rsvp-btn" id="rsvp-btn" href="#" target="_blank" rel="noopener" style="display:inline-block; text-decoration:none;">Sí, ahí estaré</a>
     <p class="rsvp-deadline">Confirmar antes del 10 de noviembre</p>
+    </div>
+    <div class="rsvp-closed" id="rsvp-closed" hidden>
+      <p class="rsvp-closed-title">Confirmaciones cerradas</p>
+      <p class="rsvp-text">El plazo para confirmar terminó el 10 de noviembre. ¡Gracias a todos los que me acompañarán!</p>
+    </div>
   </section>
 
   <footer><span data-bf="lilac"></span>gracias por ser parte de mi historia</footer>
@@ -887,6 +898,21 @@
   }
   nameInput.addEventListener('input', updateRsvp);
   updateRsvp();
+
+  // cierre de confirmaciones: desde el 11 de noviembre 2026, 00:00 hora Colombia
+  const RSVP_CLOSE = new Date('2026-11-11T00:00:00-05:00');
+  function checkRsvpClosed(){
+    if(new Date() >= RSVP_CLOSE){
+      document.getElementById('rsvp-open').remove();
+      document.getElementById('rsvp-intro').remove();
+      document.getElementById('rsvp-closed').hidden = false;
+      return true;
+    }
+    return false;
+  }
+  if(!checkRsvpClosed()){
+    const rsvpTimer = setInterval(()=>{ if(checkRsvpClosed()) clearInterval(rsvpTimer); }, 60000);
+  }
 
   // song player
   const song = document.getElementById('song');
