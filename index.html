@@ -1069,8 +1069,8 @@
   }, {threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // countdown -> Nov 22, 2026, 7:00 pm
-  const target = new Date('2026-11-22T19:00:00');
+  // countdown -> 22 nov 2026, 6:00 pm (hora Colombia)
+  const target = new Date('2026-11-22T18:00:00-05:00');
   function tick(){
     const now = new Date();
     let diff = target - now;
